@@ -68,3 +68,9 @@ We begin by creating the ambient shading, which includes the strength and 3D coo
 Then, the diffuse shading is created, adding in light direction, normalization, and diffusion.
 Finally, the specular shading is created, setting the strength, view direction, reflection direction.
 Using all this information, we create a vec3 result by adding all of the ambient, diffuse, and specular together, multiplying them by the object color to create a Phong lighting representation.
+
+References:
+https://learnopengl.com/code_viewer.php?code=lighting/basic_lighting-exercise2
+https://learnopengl.com/Getting-started/Camera
+https://learnopengl.com/Advanced-OpenGL/Cubemaps
+https://www.khronos.org/registry/OpenGL-Refpages/gl4/
