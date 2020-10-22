@@ -55,3 +55,16 @@ This will pass the matrices to the shader.
 For example, glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(glm::mat4(1.0)));
 This one grabs information from the vertex shading, in this case the "model", 1 for the count, we'll set the transpose to false, passing through the model matrix "mat4(1.0)."
 
+Now, the phong.vs file (the vertex shader file):
+We declare GLSL version to be 3.3 to match the openGL version.
+Following such, we declare the uniforms, model, view, and projection.
+Now, we have the per vertex attributes, declaring the model, view, and projection.
+As for gl_Position is the clip-space output position of the current vertex, so we take projection, view, and model, multiplying them together by the matrix of vec4(pos,1.0) to extend 3D to 4D homogenous coordinates.
+
+Now that we have the vertex shader file, we need to create one more file, the fragment shader file, phong.frag:
+Similar to the phong.vs file, we declare GLSL to 3.3 to match the openGL version.
+The uniforms here will take material properties, textures, light positions, light color, object color.
+We begin by creating the ambient shading, which includes the strength and 3D coordinates of the strength and light color.
+Then, the diffuse shading is created, adding in light direction, normalization, and diffusion.
+Finally, the specular shading is created, setting the strength, view direction, reflection direction.
+Using all this information, we create a vec3 result by adding all of the ambient, diffuse, and specular together, multiplying them by the object color to create a Phong lighting representation.
